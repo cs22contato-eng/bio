@@ -1,0 +1,6 @@
+{
+  "name": "CS22 | Tecnologia que move negócios.",
+  "description": "Conheça as soluções da CS22 em marketing, tecnologia e gestão empresarial.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

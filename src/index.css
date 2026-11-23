@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --cs22-bg: #07080b;
+    --cs22-surface: rgba(16, 19, 26, 0.62);
+    --cs22-copper: #ea580c;
+    --cs22-copper-bright: #fb923c;
+    --cs22-silver: #cbd5e1;
+  }
+
+  html {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #07080b;
+    color: #f1f5f9;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    overflow-x: hidden;
+    background-color: #07080b;
+    min-height: 100dvh;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+/* Ghost Glass Surface & Metallic Rim */
+.ghost-glass-panel {
+  position: relative;
+  background: linear-gradient(
+    155deg,
+    rgba(26, 30, 40, 0.72) 0%,
+    rgba(13, 16, 22, 0.56) 52%,
+    rgba(19, 22, 30, 0.68) 100%
+  );
+  backdrop-filter: blur(22px) saturate(135%);
+  -webkit-backdrop-filter: blur(22px) saturate(135%);
+  box-shadow:
+    0 20px 50px -18px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.04);
+}
+
+.ghost-glass-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(226, 232, 240, 0.28) 0%,
+    rgba(234, 88, 12, 0.34) 42%,
+    rgba(148, 163, 184, 0.14) 75%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ghost-glass-panel:hover::before,
+.ghost-glass-panel:focus-within::before {
+  background: linear-gradient(
+    135deg,
+    rgba(248, 250, 252, 0.42) 0%,
+    rgba(251, 146, 60, 0.58) 45%,
+    rgba(203, 213, 225, 0.28) 80%,
+    rgba(255, 255, 255, 0.16) 100%
+  );
+}
+
+/* Specular Glass Sweep on Buttons */
+.glass-cta-button {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-cta-button::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 55%;
+  height: 200%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.06) 35%,
+    rgba(255, 255, 255, 0.24) 50%,
+    rgba(255, 255, 255, 0.06) 65%,
+    transparent 100%
+  );
+  transform: skewX(-22deg) translateX(0);
+  transition: transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.glass-cta-button:hover::after,
+.glass-cta-button:focus-visible::after {
+  transform: skewX(-22deg) translateX(340%);
+}
+
+/* Subtle Architectural Grid */
+.cs22-tech-grid {
+  background-image:
+    linear-gradient(to right, rgba(203, 213, 225, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(203, 213, 225, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 30%, #000 35%, transparent 100%);
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(2deg);
+  }
+}
+
+@keyframes ambientBreath {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes logoReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes panelReveal {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.cs22-logo-reveal {
+  animation: logoReveal 550ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.cs22-reveal {
+  animation: panelReveal 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-float-slow {
+  animation: floatSlow 12s ease-in-out infinite;
+}
+
+.animate-float-slow-delayed {
+  animation: floatSlow 15s ease-in-out 2.5s infinite;
+}
+
+.animate-ambient-breath {
+  animation: ambientBreath 9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow,
+  .animate-float-slow-delayed,
+  .animate-ambient-breath,
+  .cs22-logo-reveal,
+  .cs22-reveal {
+    animation: none !important;
+  }
+
+  .glass-cta-button::after {
+    transition: none !important;
+  }
+}
