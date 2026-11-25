@@ -61,11 +61,11 @@ export function UnitCard({ unit, index }: UnitCardProps) {
           </div>
 
           <div className="min-w-0">
-            <h2 className="font-display text-xl sm:text-[22px] font-semibold tracking-tight text-white leading-tight">
+            <h2 className="font-display text-lg sm:text-[21px] font-semibold tracking-tight text-white leading-tight">
               {unit.title}
             </h2>
             <p className="mt-0.5 text-xs font-medium tracking-wider uppercase text-[#94A3B8]">
-              CS22 · {unit.unitSubtitle}
+              {unit.eyebrowLabel}
             </p>
           </div>
         </div>

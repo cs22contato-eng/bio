@@ -21,24 +21,36 @@ test('brand identity strings match required institutional copy', () => {
   assert.equal(BRAND_IDENTITY.tagline, 'Tecnologia que move negócios.');
   assert.equal(
     BRAND_IDENTITY.complement,
-    'Conheça nossas soluções em tecnologia, marketing e gestão empresarial.',
+    'Conheça nossas soluções em tecnologia, marketing e desenvolvimento digital.',
   );
-  assert.equal(BRAND_IDENTITY.footerDivisions, 'Marketing | Sistemas | Tecnologia');
+  assert.equal(
+    BRAND_IDENTITY.footerDivisions,
+    'Marketing | Desenvolvimento Digital | Tecnologia',
+  );
 });
 
-test('business units define exact titles, buttons, and HTTPS destinations', () => {
+test('business units define exact titles, balanced copy, buttons, and HTTPS destinations', () => {
   assert.equal(BUSINESS_UNITS.length, 2);
 
-  const [marketing, sistemas] = BUSINESS_UNITS;
+  const [marketing, desenvolvimento] = BUSINESS_UNITS;
   assert.equal(marketing.title, 'CS22 Marketing');
   assert.equal(marketing.ctaLabel, 'ACESSAR CS22 MARKETING');
   assert.equal(marketing.href, 'https://marketing.cs22.com.br');
   assert.equal(isValidDestinationUrl(marketing.href), true);
 
-  assert.equal(sistemas.title, 'CS22 Sistemas');
-  assert.equal(sistemas.ctaLabel, 'ACESSAR CS22 SISTEMAS');
-  assert.equal(sistemas.href, 'https://gestao.cs22.com.br');
-  assert.equal(isValidDestinationUrl(sistemas.href), true);
+  assert.equal(desenvolvimento.title, 'CS22 · Desenvolvimento Digital');
+  assert.equal(desenvolvimento.ctaLabel, 'SOLICITAR PROJETO DIGITAL');
+  assert.equal(
+    desenvolvimento.href.startsWith('https://wa.me/5518991621455?text='),
+    true,
+  );
+  assert.equal(isValidDestinationUrl(desenvolvimento.href), true);
+
+  // Verify concise symmetrical Link-in-Bio summary length
+  const lengthDelta = Math.abs(
+    marketing.description.length - desenvolvimento.description.length,
+  );
+  assert.equal(lengthDelta <= 25, true);
 });
 
 test('WhatsApp URL builder preserves base endpoint and encodes greeting message', () => {

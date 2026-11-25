@@ -2,9 +2,10 @@ export const OFFICIAL_LOGO_PATH =
   '/assets/aistudio/WhatsApp_Image_2026-11-20_at_23.47.17_7b9a96a4.jpeg';
 
 export interface BusinessUnit {
-  id: 'marketing' | 'sistemas';
+  id: 'marketing' | 'desenvolvimento';
   title: string;
   unitSubtitle: string;
+  eyebrowLabel: string;
   description: string;
   ctaLabel: string;
   href: string;
@@ -15,33 +16,10 @@ export const BRAND_IDENTITY = {
   name: 'CS22',
   tagline: 'Tecnologia que move negócios.',
   complement:
-    'Conheça nossas soluções em tecnologia, marketing e gestão empresarial.',
+    'Conheça nossas soluções em tecnologia, marketing e desenvolvimento digital.',
   footerSummary: 'CS22 — Tecnologia que move negócios.',
-  footerDivisions: 'Marketing | Sistemas | Tecnologia',
+  footerDivisions: 'Marketing | Desenvolvimento Digital | Tecnologia',
 } as const;
-
-export const BUSINESS_UNITS: readonly BusinessUnit[] = [
-  {
-    id: 'marketing',
-    title: 'CS22 Marketing',
-    unitSubtitle: 'Marketing',
-    description:
-      'Marketing, fotografia automotiva e produção audiovisual para empresas que querem fortalecer sua presença digital e valorizar seus produtos.',
-    ctaLabel: 'ACESSAR CS22 MARKETING',
-    href: 'https://marketing.cs22.com.br',
-    accentTone: 'copper',
-  },
-  {
-    id: 'sistemas',
-    title: 'CS22 Sistemas',
-    unitSubtitle: 'Sistemas',
-    description:
-      'ERP, gestão empresarial, controle financeiro, estoque e soluções digitais para organizar e desenvolver negócios.',
-    ctaLabel: 'ACESSAR CS22 SISTEMAS',
-    href: 'https://gestao.cs22.com.br',
-    accentTone: 'silver',
-  },
-] as const;
 
 export const WHATSAPP_CONTACT = {
   label: 'FALE COM A CS22',
@@ -50,6 +28,34 @@ export const WHATSAPP_CONTACT = {
   defaultMessage:
     'Olá! Acessei a página da CS22 e gostaria de conhecer melhor as soluções da empresa.',
 } as const;
+
+export const BUSINESS_UNITS: readonly BusinessUnit[] = [
+  {
+    id: 'marketing',
+    title: 'CS22 Marketing',
+    unitSubtitle: 'Marketing',
+    eyebrowLabel: 'CS22 · Marketing',
+    description:
+      'Marketing, fotografia automotiva e produção audiovisual para fortalecer sua presença digital e valorizar seus produtos.',
+    ctaLabel: 'ACESSAR CS22 MARKETING',
+    href: 'https://marketing.cs22.com.br',
+    accentTone: 'copper',
+  },
+  {
+    id: 'desenvolvimento',
+    title: 'CS22 · Desenvolvimento Digital',
+    unitSubtitle: 'Desenvolvimento',
+    eyebrowLabel: 'Web · Apps · Micro SaaS',
+    description:
+      'Sites profissionais, aplicativos, micro apps e Micro SaaS sob medida para automatizar processos e escalar negócios.',
+    ctaLabel: 'SOLICITAR PROJETO DIGITAL',
+    href: buildWhatsAppUrl(
+      WHATSAPP_CONTACT.baseUrl,
+      'Olá! Acessei a página da CS22 e gostaria de conversar sobre um projeto de Desenvolvimento Digital.',
+    ),
+    accentTone: 'silver',
+  },
+] as const;
 
 export function buildWhatsAppUrl(
   baseUrl: string = WHATSAPP_CONTACT.baseUrl,
