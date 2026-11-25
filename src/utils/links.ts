@@ -48,11 +48,8 @@ export const BUSINESS_UNITS: readonly BusinessUnit[] = [
     eyebrowLabel: 'Web · Apps · Micro SaaS',
     description:
       'Sites profissionais, aplicativos, micro apps e Micro SaaS sob medida para automatizar processos e escalar negócios.',
-    ctaLabel: 'SOLICITAR PROJETO DIGITAL',
-    href: buildWhatsAppUrl(
-      WHATSAPP_CONTACT.baseUrl,
-      'Olá! Acessei a página da CS22 e gostaria de conversar sobre um projeto de Desenvolvimento Digital.',
-    ),
+    ctaLabel: 'ACESSAR DESENVOLVIMENTO',
+    href: 'https://soft.cs22.com.br',
     accentTone: 'silver',
   },
 ] as const;

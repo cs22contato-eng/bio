@@ -39,11 +39,8 @@ test('business units define exact titles, balanced copy, buttons, and HTTPS dest
   assert.equal(isValidDestinationUrl(marketing.href), true);
 
   assert.equal(desenvolvimento.title, 'CS22 · Desenvolvimento Digital');
-  assert.equal(desenvolvimento.ctaLabel, 'SOLICITAR PROJETO DIGITAL');
-  assert.equal(
-    desenvolvimento.href.startsWith('https://wa.me/5518991621455?text='),
-    true,
-  );
+  assert.equal(desenvolvimento.ctaLabel, 'ACESSAR DESENVOLVIMENTO');
+  assert.equal(desenvolvimento.href, 'https://soft.cs22.com.br');
   assert.equal(isValidDestinationUrl(desenvolvimento.href), true);
 
   // Verify concise symmetrical Link-in-Bio summary length
